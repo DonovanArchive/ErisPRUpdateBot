@@ -64,7 +64,7 @@ process.nextTick(async() => {
 				// check if latest commit is included in local commits
 				if(!hashes.includes(hash)) {
 					outdated = true;
-					console.log(`Ref "${name}" is outdated, ${remote}/${branch} contains hash not included in local: ${hash}`);
+					console.log(`Ref "${name}" is outdated, ${remote}/${refBranch} contains hash not included in local: ${hash}`);
 					await git.fetch(remote, `${refBranch}:update/${jobId}/${remote}/${refBranch}/${branch}/`);
 					await git.checkout(`update/${jobId}/${remote}/${refBranch}/${branch}`);
 					await git.push("self", `update/${jobId}/${remote}/${refBranch}/${branch}`);
@@ -83,6 +83,6 @@ process.nextTick(async() => {
 			console.log(`Error updating "${currentRef}"`, err);
 		}
 
-		console.log(`Done processing for branch "${branch}", ${outdated ? "" : "no "}changes were found`);
+		console.log(`Done processing branch "${branch}", ${outdated ? "" : "no "}changes were found`);
 	}
 });

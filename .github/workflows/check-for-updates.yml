@@ -2,7 +2,7 @@ name: Check For Updates
 
 on:
   schedule:
-    - cron: '0 */3 * * *'
+    - cron: '0 */1 * * *'
   workflow_dispatch:
 
 jobs:
@@ -10,7 +10,7 @@ jobs:
     name: Check For Updates
     runs-on: ubuntu-latest
     steps:
-     - name: Checkout,
+     - name: Checkout
        uses: actions/checkout@v2
      - run: npm i
      - name: Run
