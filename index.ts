@@ -69,7 +69,7 @@ process.nextTick(async() => {
 				const ls = await git.listRemote([remote, "-h", refBranch]);
 				// slice off last part of ls-remote
 				const hash = ls.toString().slice(0, 40);
-				const prBranch = `${remote}/${refBranch}/${hash}`;
+				const prBranch = `${remote}/${refBranch}/${branch}/${hash}`;
 				// check if latest commit is included in local commits
 				if(!hashes.includes(hash)) {
 					outdated = true;
