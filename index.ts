@@ -14,8 +14,8 @@ const config = YAML.parse(fs.readFileSync(`${__dirname}/config.yml`).toString())
 	remotes: Record<string, string> & { origin: string; };
 };
 
-if(process.env.GITHUB_USER === undefined) throw new Error("Missing GITHUB_USER env variable");
-if(process.env.GITHUB_TOKEN === undefined) throw new Error("Missing GITHUB_TOKEN env variable");
+if(!process.env.GITHUB_USER) throw new Error("Missing GITHUB_USER env variable");
+if(!process.env.GITHUB_TOKEN) throw new Error("Missing GITHUB_TOKEN env variable");
 
 const octo = new Octokit({ auth: process.env.GITHUB_TOKEN });
 
