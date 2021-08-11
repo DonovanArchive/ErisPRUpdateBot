@@ -72,7 +72,7 @@ process.nextTick(async() => {
 							owner: config.remotes.origin.split("/").slice(-2)[0],
 							repo: config.remotes.origin.split("/").slice(-1)[0],
 							title: `Remote Update (${branch}): ${remote}/${refBranch}`,
-							head: `${config.remotes.self.replace(/(https?:\/\/)?(\w:\w)?github.com\//, "").split("/").slice(-2, -1)[0]}:update/${remote}/${refBranch}/${jobId}`,
+							head: `${config.remotes.self.replace(/(https?:\/\/)?(\w:\w)?github.com\//, "").split("/").slice(-2, -1)[0]}:update/${jobId}/${remote}/${refBranch}/${branch}`,
 							base: branch,
 							maintainer_can_modify: true
 					});
