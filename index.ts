@@ -37,7 +37,7 @@ process.nextTick(async() => {
 	// add remotes
 	for(const [name, url] of r) await git.addRemote(name, url/* `https://${config.auth.user}:${config.auth.token}@${url.slice(8)}` */);
 
-	// git local commits
+	// get local commits
 	const log = await git.log();
 	const hashes = log.all.map(c => c.hash);
 
@@ -64,18 +64,12 @@ process.nextTick(async() => {
 				if(!hashes.includes(hash)) {
 					outdated = true;
 					console.log(`Ref "${name}" is outdated, ${remote}/${branch} contains hash not included in local: ${hash}`);
-					/* await git.merge(["--commit", "--no-edit", "--allow-unrelated-histories", `${remote}/${branch}`]).catch(err => {
-						conflict = true;
-						console.error("Ref \"%s\" has a merge conflict, this must be fixed on github.", name);
-					});
-					await git.add(".");
-					await git.commit(`Update ref "${name}""`); */
 					await git.fetch(remote, `${refBranch}:update/${remote}/${refBranch}/${jobId}`);
 					await git.push("self", `update/${remote}/${refBranch}/${jobId}`);
 					const pr = await octo.request("POST /repos/{owner}/{repo}/pulls", {
 							owner: config.remotes.origin.split("/").slice(-2)[0],
 							repo: config.remotes.origin.split("/").slice(-1)[0],
-							title: `Remote Update: ${remote}/${refBranch}`,
+							title: `Remote Update (${branch}): ${remote}/${refBranch}`,
 							head: `${config.remotes.self.replace(/(https?:\/\/)?(\w:\w)?github.com\//, "").split("/").slice(-2, -1)[0]}:update/${remote}/${refBranch}/${jobId}`,
 							base: branch,
 							maintainer_can_modify: true
