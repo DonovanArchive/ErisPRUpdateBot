@@ -1,0 +1,21 @@
+name: Check For Updates
+
+on:
+  schedule:
+    - cron: '0 */3 * * *'
+  workflow_dispatch:
+
+jobs:
+  check:
+    name: Check For Updates
+    runs-on: ubuntu-latest
+    steps:
+     - name: Checkout,
+       uses: actions/checkout@v2
+     - run: npm i
+     - name: Run
+       run: npx ts-node index.ts
+       env:
+        GITHUB_USER: '${{ secrets.USER }}'
+        GITHUB_TOKEN: '${{ secrets.TOKEN }}'
+    
