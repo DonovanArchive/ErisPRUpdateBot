@@ -14,10 +14,12 @@ const config = YAML.parse(fs.readFileSync(`${__dirname}/config.yml`).toString())
 	remotes: Record<string, string> & { origin: string; };
 };
 
-if(!process.env.GITHUB_USER) throw new Error("Missing GITHUB_USER env variable");
-if(!process.env.GITHUB_TOKEN) throw new Error("Missing GITHUB_TOKEN env variable");
+if(!fs.existsSync(`${__dirname}/token`)) throw new Error("Missing token file.");
 
-const octo = new Octokit({ auth: process.env.GITHUB_TOKEN });
+const USER = "ErisPRUpdateBot";
+const TOKEN = fs.readFileSync(`${__dirname}/token`).toString();
+
+const octo = new Octokit({ auth: TOKEN });
 
 process.nextTick(async() => {
 	const b = Object.entries(config.branches);
@@ -28,7 +30,7 @@ process.nextTick(async() => {
 
 	// clone
 	await git.clone(config.remotes.origin, ".");
-	execSync(`git config --local credential.helper '!f() { sleep 1; echo "username=${process.env.GITHUB_USER}"; echo "password=${process.env.GITHUB_TOKEN}"; }; f'`, {
+	execSync(`git config --local credential.helper '!f() { sleep 1; echo "username=${USER}"; echo "password=${TOKEN}"; }; f'`, {
 		cwd: wDir
 	});
 
