@@ -14,12 +14,10 @@ const config = YAML.parse(fs.readFileSync(`${__dirname}/config.yml`).toString())
 	remotes: Record<string, string> & { origin: string; };
 };
 
-if(!fs.existsSync(`${__dirname}/token`)) throw new Error("Missing token file.");
+if(!process.env.GITHUB_USER) throw new Error("Missing GITHUB_USER env variable");
+if(!process.env.GITHUB_TOKEN) throw new Error("Missing GITHUB_TOKEN env variable");
 
-const USER = "ErisPRUpdateBot";
-const TOKEN = fs.readFileSync(`${__dirname}/token`).toString();
-
-const octo = new Octokit({ auth: TOKEN });
+const octo = new Octokit({ auth: process.env.GITHUB_TOKEN });
 
 process.nextTick(async() => {
 	const b = Object.entries(config.branches);
@@ -30,7 +28,7 @@ process.nextTick(async() => {
 
 	// clone
 	await git.clone(config.remotes.origin, ".");
-	execSync(`git config --local credential.helper '!f() { sleep 1; echo "username=${USER}"; echo "password=${TOKEN}"; }; f'`, {
+	execSync(`git config --local credential.helper '!f() { sleep 1; echo "username=${process.env.GITHUB_USER}"; echo "password=${process.env.GITHUB_TOKEN}"; }; f'`, {
 		cwd: wDir
 	});
 
@@ -66,16 +64,15 @@ process.nextTick(async() => {
 				if(!hashes.includes(hash)) {
 					outdated = true;
 					console.log(`Ref "${name}" is outdated, ${remote}/${branch} contains hash not included in local: ${hash}`);
-					console.log(USER, TOKEN);
 					await git.fetch(remote, `${refBranch}:update/${remote}/${refBranch}/${jobId}`);
 					await git.push("self", `update/${remote}/${refBranch}/${jobId}`);
 					const pr = await octo.request("POST /repos/{owner}/{repo}/pulls", {
-						owner: config.remotes.origin.split("/").slice(-2)[0],
-						repo: config.remotes.origin.split("/").slice(-1)[0],
-						title: `Remote Update (${branch}): ${remote}/${refBranch}`,
-						head: `${config.remotes.self.replace(/(https?:\/\/)?(\w:\w)?github.com\//, "").split("/").slice(-2, -1)[0]}:update/${remote}/${refBranch}/${jobId}`,
-						base: branch,
-						maintainer_can_modify: true
+							owner: config.remotes.origin.split("/").slice(-2)[0],
+							repo: config.remotes.origin.split("/").slice(-1)[0],
+							title: `Remote Update (${branch}): ${remote}/${refBranch}`,
+							head: `${config.remotes.self.replace(/(https?:\/\/)?(\w:\w)?github.com\//, "").split("/").slice(-2, -1)[0]}:update/${remote}/${refBranch}/${jobId}`,
+							base: branch,
+							maintainer_can_modify: true
 					});
 					console.log(`Created pull request for "${name}", ${pr.data.html_url}`);
 				} else console.log(`Ref "${name}" is up-to-date, hash: ${hash}`);
