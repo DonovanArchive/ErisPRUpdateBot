@@ -5,6 +5,7 @@ import crypto from "crypto";
 import simpleGit from "simple-git/promise";
 import fetch from "node-fetch";
 import { Octokit } from "@octokit/core";
+import { brotliDecompressSync } from "zlib";
 const jobId = crypto.randomBytes(16).toString("hex");
 const wDir = `${__dirname}/run/${jobId}`;
 fs.removeSync(`${__dirname}/run`); // @FIXME
@@ -65,14 +66,15 @@ process.nextTick(async() => {
 				if(!hashes.includes(hash)) {
 					outdated = true;
 					console.log(`Ref "${name}" is outdated, ${remote}/${refBranch} contains hash not included in local: ${hash}`);
-					await git.fetch(remote, `${refBranch}:update/${jobId}/${remote}/${refBranch}/${branch}`);
-					await git.checkout(`update/${jobId}/${remote}/${refBranch}/${branch}`);
-					await git.push("self", `update/${jobId}/${remote}/${refBranch}/${branch}`);
+					const prBranch = `update/${branch}/${remote}/${refBranch}/${hash}`;
+					await git.fetch(remote, `${refBranch}:${prBranch}`);
+					await git.checkout(prBranch);
+					await git.push("self", prBranch);
 					const pr = await octo.request("POST /repos/{owner}/{repo}/pulls", {
 							owner: config.remotes.origin.split("/").slice(-2)[0],
 							repo: config.remotes.origin.split("/").slice(-1)[0],
 							title: `Remote Update (${branch}): ${remote}/${refBranch}`,
-							head: `${config.remotes.self.replace(/(https?:\/\/)?(\w:\w)?github.com\//, "").split("/").slice(-2, -1)[0]}:update/${jobId}/${remote}/${refBranch}/${branch}`,
+							head: `${process.env.GITHUB_USERNAME}:${prBranch}`,
 							base: branch,
 							maintainer_can_modify: true
 					});
