@@ -37,9 +37,6 @@ process.nextTick(async() => {
 	// add remotes
 	for(const [name, url] of r) await git.addRemote(name, url/* `https://${config.auth.user}:${config.auth.token}@${url.slice(8)}` */);
 
-	// get local commits
-	const log = await git.log();
-	const hashes = log.all.map(c => c.hash);
 
 	// loop branches
 	for(const [branch, refs] of b) {
@@ -49,6 +46,10 @@ process.nextTick(async() => {
 			// checkout branch
 			await git.fetch("origin", branch);
 			await git.checkout(branch);
+			
+			// get local commits
+			const log = await git.log();
+			const hashes = log.all.map(c => c.hash);
 			// await git.branch(["-m", jobId]);
 
 			// loop remotes
