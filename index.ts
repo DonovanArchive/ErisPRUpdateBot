@@ -74,7 +74,7 @@ process.nextTick(async() => {
 							owner: config.remotes.origin.split("/").slice(-2)[0],
 							repo: config.remotes.origin.split("/").slice(-1)[0],
 							title: `Remote Update (${branch}): ${remote}/${refBranch}`,
-							head: `${process.env.GITHUB_USERNAME}:${prBranch}`,
+							head: `${process.env.GITHUB_USER}:${prBranch}`,
 							base: branch,
 							maintainer_can_modify: true
 					});
