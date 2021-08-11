@@ -114,7 +114,7 @@ process.nextTick(async() => {
 							pull_number: oldPr,
 							state: "closed"
 						});
-						await git.push(["self", "--delete", prDupRef]);
+						await git.push(["self", "--delete", prDupRef]).catch(() => null);
 					}
 				} else console.log(`Ref "${name}" is up-to-date, hash: ${hash}`);
 			}
