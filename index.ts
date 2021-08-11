@@ -65,7 +65,7 @@ process.nextTick(async() => {
 				if(!hashes.includes(hash)) {
 					outdated = true;
 					console.log(`Ref "${name}" is outdated, ${remote}/${refBranch} contains hash not included in local: ${hash}`);
-					await git.fetch(remote, `${refBranch}:update/${jobId}/${remote}/${refBranch}/${branch}/`);
+					await git.fetch(remote, `${refBranch}:update/${jobId}/${remote}/${refBranch}/${branch}`);
 					await git.checkout(`update/${jobId}/${remote}/${refBranch}/${branch}`);
 					await git.push("self", `update/${jobId}/${remote}/${refBranch}/${branch}`);
 					const pr = await octo.request("POST /repos/{owner}/{repo}/pulls", {
