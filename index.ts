@@ -65,6 +65,7 @@ process.nextTick(async() => {
 					outdated = true;
 					console.log(`Ref "${name}" is outdated, ${remote}/${branch} contains hash not included in local: ${hash}`);
 					await git.fetch(remote, `${refBranch}:update/${remote}/${refBranch}/${jobId}`);
+					await git.checkout(`update/${remote}/${refBranch}/${jobId}`);
 					await git.push("self", `update/${remote}/${refBranch}/${jobId}`);
 					const pr = await octo.request("POST /repos/{owner}/{repo}/pulls", {
 							owner: config.remotes.origin.split("/").slice(-2)[0],
