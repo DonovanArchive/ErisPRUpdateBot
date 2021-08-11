@@ -66,11 +66,15 @@ process.nextTick(async() => {
 				if(!hashes.includes(hash)) {
 					outdated = true;
 					console.log(`Ref "${name}" is outdated, ${remote}/${refBranch} contains hash not included in local: ${hash}`);
+					const prBranch = `${branch}/${remote}/${hash}`;
+					await git.fetch(remote, `${refBranch}:${prBranch}`);
+					await git.checkout(prBranch);
+					await git.push("self", prBranch);
 					const pr = await octo.request("POST /repos/{owner}/{repo}/pulls", {
 							owner: config.remotes.origin.split("/").slice(-2)[0],
 							repo: config.remotes.origin.split("/").slice(-1)[0],
 							title: `Remote Update (${branch}): ${remote}/${refBranch}`,
-							head: `${remote}:${refBranch}`,
+							head: `${process.env.GITHUB_USER}:${prBranch}`,
 							base: branch,
 							maintainer_can_modify: true
 					});
