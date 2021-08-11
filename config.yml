@@ -113,10 +113,30 @@ branches:
       branch: interactions,
       remote: catboi8
     }
+  temp:
+    - {
+      name: Eris Dev,
+      branch: dev,
+      remote: main
+    }
+    - {
+      name: Discord API v9 (1216),
+      branch: v9,
+      remote: bsian03
+    }
+    - {
+      name: Expose components (1189),
+      branch: components,
+      remote: bsian03
+    }
+    - {
+      name: Support Interactions (1210),
+      branch: interactions,
+      remote: catboi8
+    }
 
 remotes:
   origin: https://github.com/DonovanDMC/eris
-  self: https://github.com/ErisPRUpdateBot/eris
   main: https://github.com/abalabahaha/eris
   bsian03: https://github.com/bsian03/eris
   catboi8: https://github.com/Catboi8/eris
