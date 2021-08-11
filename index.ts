@@ -5,6 +5,7 @@ import crypto from "crypto";
 import simpleGit from "simple-git/promise";
 import fetch from "node-fetch";
 import { Octokit } from "@octokit/core";
+import { createTokenAuth } from "@octokit/auth-token";
 const jobId = crypto.randomBytes(16).toString("hex");
 const wDir = `${__dirname}/run/${jobId}`;
 fs.removeSync(`${__dirname}/run`); // @FIXME
@@ -69,12 +70,15 @@ process.nextTick(async() => {
 					await git.fetch(remote, `${refBranch}:update/${remote}/${refBranch}/${jobId}`);
 					await git.push("self", `update/${remote}/${refBranch}/${jobId}`);
 					const pr = await octo.request("POST /repos/{owner}/{repo}/pulls", {
-							owner: config.remotes.origin.split("/").slice(-2)[0],
-							repo: config.remotes.origin.split("/").slice(-1)[0],
-							title: `Remote Update (${branch}): ${remote}/${refBranch}`,
-							head: `${config.remotes.self.replace(/(https?:\/\/)?(\w:\w)?github.com\//, "").split("/").slice(-2, -1)[0]}:update/${remote}/${refBranch}/${jobId}`,
-							base: branch,
-							maintainer_can_modify: true
+						owner: config.remotes.origin.split("/").slice(-2)[0],
+						repo: config.remotes.origin.split("/").slice(-1)[0],
+						title: `Remote Update (${branch}): ${remote}/${refBranch}`,
+						head: `${config.remotes.self.replace(/(https?:\/\/)?(\w:\w)?github.com\//, "").split("/").slice(-2, -1)[0]}:update/${remote}/${refBranch}/${jobId}`,
+						base: branch,
+						maintainer_can_modify: true,
+						request: {
+							hook: createTokenAuth(TOKEN).hook
+						}
 					});
 					console.log(`Created pull request for "${name}", ${pr.data.html_url}`);
 				} else console.log(`Ref "${name}" is up-to-date, hash: ${hash}`);
