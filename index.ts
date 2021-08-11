@@ -90,15 +90,16 @@ process.nextTick(async() => {
 							head: `${process.env.GITHUB_USER}:${prBranch}`,
 							base: branch,
 							maintainer_can_modify: true
-					});
+					}); 
 					console.log(`Created pull request for "${name}", ${pr.data.html_url}`);
+
 					// get all remote commits
 					const branchLog = await git.log([`${remote}/${refBranch}`]);
 					const branchHashes = branchLog.all.map(c => c.hash);
 					
 					// check for pull requests with a branch of one of our commit hashes
 					// (new commits since last)
-					const prDupRef = prRefList.find(r => branchHashes.some(h => r.endsWith(`${branch}/${h}`)));
+					const prDupRef = prRefList.find(r => branchHashes.some(h => r === ``));
 					if(prDupRef) {
 						const oldPr = pulls.data.find(p => p.head.ref === prDupRef)!.number;
 						console.log(`(${remote}/${refBranch}) Closing old pull request #${oldPr}`);
