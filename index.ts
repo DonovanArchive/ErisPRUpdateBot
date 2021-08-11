@@ -83,6 +83,6 @@ process.nextTick(async() => {
 			console.log(`Error updating "${currentRef}"`, err);
 		}
 
-		console.log(`Done processing for branch "${branch}", ${outdated ? "" : "no "}changes were found`);
+		console.log(`Done processing branch "${branch}", ${outdated ? "" : "no "}changes were found`);
 	}
 });
