@@ -99,7 +99,7 @@ process.nextTick(async() => {
 					
 					// check for pull requests with a branch of one of our commit hashes
 					// (new commits since last)
-					const prDupRef = prRefList.find(r => branchHashes.some(h => r === ``));
+					const prDupRef = prRefList.find(ref => branchHashes.some(hash => ref === `${remote}/${refBranch}/${branch}/${hash}`));
 					if(prDupRef) {
 						const oldPr = pulls.data.find(p => p.head.ref === prDupRef)!.number;
 						console.log(`(${remote}/${refBranch}) Closing old pull request #${oldPr}`);
