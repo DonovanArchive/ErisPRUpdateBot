@@ -1,35 +1,29 @@
 import { execSync } from "child_process";
 import * as fs from "fs-extra";
-import YAML from "yaml";
+import config from "../config.json";
 import crypto from "crypto";
 import simpleGit from "simple-git/promise";
-import fetch from "node-fetch";
 import { Octokit } from "@octokit/core";
-import { brotliDecompressSync } from "zlib";
 const jobId = crypto.randomBytes(16).toString("hex");
 const wDir = `${__dirname}/run/${jobId}`;
 fs.removeSync(`${__dirname}/run`); // @FIXME
 fs.mkdirpSync(wDir);
-const config = YAML.parse(fs.readFileSync(`${__dirname}/config.yml`).toString()) as {
-	branches: Record<string, Array<Record<"name" | "branch" | "remote", string>>>;
-	remotes: Record<string, string> & { origin: string; };
-};
 
-const ORIGIN_USER = config.remotes.origin.split("/").slice(-2)[0];
+const ORIGIN_USER = config.git.remotes.origin.split("/").slice(-2)[0];
 if(!process.env.GITHUB_USER) throw new Error("Missing GITHUB_USER env variable");
 if(!process.env.GITHUB_TOKEN) throw new Error("Missing GITHUB_TOKEN env variable");
 
 const octo = new Octokit({ auth: process.env.GITHUB_TOKEN });
 
 process.nextTick(async() => {
-	const b = Object.entries(config.branches);
-	const r = Object.entries(config.remotes);
+	const b = Object.entries(config.git.branches);
+	const r = Object.entries(config.git.remotes);
 
 	// setup
 	const git = simpleGit(wDir);
 
 	// clone
-	await git.clone(config.remotes.origin, ".");
+	await git.clone(config.git.remotes.origin, ".");
 	execSync(`git config --local credential.helper '!f() { sleep 1; echo "username=${process.env.GITHUB_USER}"; echo "password=${process.env.GITHUB_TOKEN}"; }; f'`, {
 		cwd: wDir
 	});
@@ -37,7 +31,7 @@ process.nextTick(async() => {
 	// override it
 	await git.removeRemote("origin");
 	// add remotes
-	for(const [name, url] of r) await git.addRemote(name, url/* `https://${config.auth.user}:${config.auth.token}@${url.slice(8)}` */);
+	for(const [name, url] of r) await git.addRemote(name, url/* `https://${config.git.auth.user}:${config.git.auth.token}@${url.slice(8)}` */);
 
 	const pulls = await octo.request("GET /repos/{owner}/{repo}/pulls", {
 		owner: ORIGIN_USER,

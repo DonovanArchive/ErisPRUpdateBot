@@ -1,0 +1,135 @@
+{
+	"git": {
+		"branches": {
+			"everything": [
+				{
+					"name": "Eris Dev",
+					"branch": "dev",
+					"remote": "main"
+				},
+				{
+					"name": "Discord API v9 (1216)",
+					"branch": "v9",
+					"remote": "bsian03"
+				},
+				{
+					"name": "Expose components (1189)",
+					"branch": "components",
+					"remote": "bsian03"
+				},
+				{
+					"name": "Support Interactions (1210)",
+					"branch": "interactions",
+					"remote": "catboi8"
+				},
+				{
+					"name": "Type guild features as actual values (1212)",
+					"branch": "guild-features",
+					"remote": "bsian03"
+				},
+				{
+					"name": "Support guild specific avatars (1219)",
+					"branch": "guild-avatars",
+					"remote": "bsian03"
+				},
+				{
+					"name": "Sticker Sending (1252)",
+					"branch": "sticker-ids",
+					"remote": "donovandmc"
+				},
+				{
+					"name": "Better types for events (1242)",
+					"branch": "types",
+					"remote": "headtrixz"
+				},
+				{
+					"name": "Add support for user banners (1238)",
+					"branch": "user-banners",
+					"remote": "iifdct"
+				},
+				{
+					"name": "Standardized parsing errors (1227)",
+					"branch": "dev",
+					"remote": "ljneon"
+				},
+				{
+					"name": "Fix/improve handling of rate limit headers (1256)",
+					"branch": "ratelimits",
+					"remote": "bsian03"
+				},
+				{
+					"name": "Expose audit log events 83-85 (1213)",
+					"branch": "stage",
+					"remote": "bsian03"
+				}
+			],
+			"v9-components": [
+				{
+					"name": "Eris Dev",
+					"branch": "dev",
+					"remote": "main"
+				},
+				{
+					"name": "Discord API v9 (1216)",
+					"branch": "v9",
+					"remote": "bsian03"
+				},
+				{
+					"name": "Expose components (1189)",
+					"branch": "components",
+					"remote": "bsian03"
+				}
+			],
+			"v9-interactions": [
+				{
+					"name": "Eris Dev",
+					"branch": "dev",
+					"remote": "main"
+				},
+				{
+					"name": "Discord API v9 (1216)",
+					"branch": "v9",
+					"remote": "bsian03"
+				},
+				{
+					"name": "Support Interactions (1210)",
+					"branch": "interactions",
+					"remote": "catboi8"
+				}
+			],
+			"v9-components-interactions": [
+				{
+					"name": "Eris Dev",
+					"branch": "dev",
+					"remote": "main"
+				},
+				{
+					"name": "Discord API v9 (1216)",
+					"branch": "v9",
+					"remote": "bsian03"
+				},
+				{
+					"name": "Expose components (1189)",
+					"branch": "components",
+					"remote": "bsian03"
+				},
+				{
+					"name": "Support Interactions (1210)",
+					"branch": "interactions",
+					"remote": "catboi8"
+				}
+			]
+		},
+		"remotes": {
+			"origin": "https://github.com/DonovanDMC/eris",
+			"main": "https://github.com/abalabahaha/eris",
+			"self": "https://github.com/ErisPRUpdateBot/eris",
+			"bsian03": "https://github.com/bsian03/eris",
+			"catboi8": "https://github.com/Catboi8/eris",
+			"donovandmc": "https://github.com/DonovanDMC/eris",
+			"headtrixz": "https://github.com/HeadTriXz/eris",
+			"iifdct": "https://github.com/iiFDCT/eris",
+			"ljneon": "https://github.com/LJNeon/eris"
+		}
+	}
+}
