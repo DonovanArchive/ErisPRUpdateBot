@@ -1,13 +1,10 @@
 import { execSync } from "child_process";
 import * as fs from "fs-extra";
 import config from "../config.json";
-import crypto from "crypto";
 import simpleGit from "simple-git/promise";
 import { Octokit } from "@octokit/core";
-const jobId = crypto.randomBytes(16).toString("hex");
-const wDir = `${__dirname}/run/${jobId}`;
-fs.removeSync(`${__dirname}/run`); // @FIXME
-fs.mkdirpSync(wDir);
+const workingDir = `${__dirname}/run`;
+fs.mkdirpSync(workingDir);
 
 const ORIGIN_USER = config.git.remotes.origin.split("/").slice(-2)[0];
 if(!process.env.GITHUB_USER) throw new Error("Missing GITHUB_USER env variable");
@@ -20,12 +17,12 @@ process.nextTick(async() => {
 	const r = Object.entries(config.git.remotes);
 
 	// setup
-	const git = simpleGit(wDir);
+	const git = simpleGit(workingDir);
 
 	// clone
 	await git.clone(config.git.remotes.origin, ".");
 	execSync(`git config --local credential.helper '!f() { sleep 1; echo "username=${process.env.GITHUB_USER}"; echo "password=${process.env.GITHUB_TOKEN}"; }; f'`, {
-		cwd: wDir
+		cwd: workingDir
 	});
 
 	// override it
@@ -119,4 +116,6 @@ process.nextTick(async() => {
 
 		console.log(`Done processing branch "${branch}", ${outdated ? "" : "no "}changes were found`);
 	}
+	
+	fs.removeSync(workingDir);
 });
