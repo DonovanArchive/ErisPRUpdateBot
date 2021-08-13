@@ -1,34 +1,43 @@
 import { execSync } from "child_process";
 import * as fs from "fs-extra";
 import config from "../config.json";
+import privateConfig from "../privateConfig.json";
 import simpleGit from "simple-git/promise";
-import { Octokit } from "@octokit/core";
-const workingDir = `${__dirname}/run`;
+import { Octokit } from "@octokit/rest";
+const workingDir = `${__dirname}/../run`;
 fs.mkdirpSync(workingDir);
 
-const ORIGIN_USER = config.git.remotes.origin.split("/").slice(-2)[0];
-if(!process.env.GITHUB_USER) throw new Error("Missing GITHUB_USER env variable");
-if(!process.env.GITHUB_TOKEN) throw new Error("Missing GITHUB_TOKEN env variable");
+const ORIGIN_USER = config.checkForUpdates.remotes.origin.split("/").slice(-2)[0];
+let GITHUB_USER: string, GITHUB_TOKEN: string;
+if(process.argv.join(" ").includes("--dev")) {
+	GITHUB_USER = privateConfig.GITHUB_USER,
+	GITHUB_TOKEN = privateConfig.GITHUB_TOKEN;
+} else {
+	GITHUB_USER = process.env.GITHUB_USER!;
+	GITHUB_TOKEN = process.env.GITHUB_TOKEN!;
+}
+if(!GITHUB_USER) throw new Error("Missing GITHUB_USER valye");
+if(!GITHUB_TOKEN) throw new Error("Missing GITHUB_TOKEN value");
 
-const octo = new Octokit({ auth: process.env.GITHUB_TOKEN });
+const octo = new Octokit({ auth: GITHUB_TOKEN });
 
 process.nextTick(async() => {
-	const b = Object.entries(config.git.branches);
-	const r = Object.entries(config.git.remotes);
+	const b = Object.entries(config.checkForUpdates.branches);
+	const r = Object.entries(config.checkForUpdates.remotes);
 
 	// setup
 	const git = simpleGit(workingDir);
 
 	// clone
-	await git.clone(config.git.remotes.origin, ".");
-	execSync(`git config --local credential.helper '!f() { sleep 1; echo "username=${process.env.GITHUB_USER}"; echo "password=${process.env.GITHUB_TOKEN}"; }; f'`, {
+	await git.clone(config.checkForUpdates.remotes.origin, ".");
+	execSync(`git config --local credential.helper '!f() { sleep 1; echo "username=${GITHUB_USER}"; echo "password=${GITHUB_TOKEN}"; }; f'`, {
 		cwd: workingDir
 	});
 
 	// override it
 	await git.removeRemote("origin");
 	// add remotes
-	for(const [name, url] of r) await git.addRemote(name, url/* `https://${config.git.auth.user}:${config.git.auth.token}@${url.slice(8)}` */);
+	for(const [name, url] of r) await git.addRemote(name, url/* `https://${config.checkForUpdates.auth.user}:${config.checkForUpdates.auth.token}@${url.slice(8)}` */);
 
 	const pulls = await octo.request("GET /repos/{owner}/{repo}/pulls", {
 		owner: ORIGIN_USER,

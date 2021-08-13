@@ -18,7 +18,7 @@
   "homepage": "https://github.com/DonovanDMC/ErisAutoMerge#readme",
   "dependencies": {
     "@octokit/auth-token": "^2.4.5",
-    "@octokit/core": "^3.5.1",
+    "@octokit/rest": "^18.9.0",
     "@types/fs-extra": "^9.0.12",
     "@types/node": "^16.4.13",
     "@types/node-fetch": "^2.5.12",
