@@ -99,9 +99,9 @@ process.nextTick(async() => {
 					
 					// check for pull requests with a branch of one of our commit hashes
 					// (new commits since last)
-					const prDupRef = prRefList.find(ref => branchHashes.some(hash => ref === `${remote}/${refBranch}/${branch}/${hash}`));
-					if(prDupRef) {
-						const oldPr = pulls.data.find(p => p.head.ref === prDupRef)!.number;
+					const prDupRef = prRefList.filter(ref => branchHashes.some(hash => ref === `${remote}/${refBranch}/${branch}/${hash}`));
+					for (const dup of prDupRef) {
+						const oldPr = pulls.data.find(p => p.head.ref === dup)!.number;
 						console.log(`(${remote}/${refBranch}) Closing old pull request #${oldPr}`);
 						await octo.request("POST /repos/{owner}/{repo}/issues/{issue_number}/comments", {
 							owner: ORIGIN_USER,
@@ -115,7 +115,7 @@ process.nextTick(async() => {
 							pull_number: oldPr,
 							state: "closed"
 						});
-						await git.push(["self", "--delete", prDupRef]).catch(() => null);
+						await git.push(["self", "--delete", dup]).catch(() => null);
 					}
 				} else console.log(`Ref "${name}" is up-to-date, hash: ${hash}`);
 			}
