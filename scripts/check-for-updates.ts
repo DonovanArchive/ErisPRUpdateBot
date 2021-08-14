@@ -1,7 +1,6 @@
 import { execSync } from "child_process";
 import * as fs from "fs-extra";
 import config from "../config.json";
-import privateConfig from "../privateConfig.json";
 import simpleGit from "simple-git/promise";
 import { Octokit } from "@octokit/rest";
 const workingDir = `${__dirname}/../run`;
@@ -10,6 +9,7 @@ fs.mkdirpSync(workingDir);
 const ORIGIN_USER = config.checkForUpdates.remotes.origin.split("/").slice(-2)[0];
 let GITHUB_USER: string, GITHUB_TOKEN: string;
 if(process.argv.join(" ").includes("--dev")) {
+	const privateConfig = require("../privateConfig.json") as typeof import("../privateConfig.json");
 	GITHUB_USER = privateConfig.GITHUB_USER,
 	GITHUB_TOKEN = privateConfig.GITHUB_TOKEN;
 } else {
