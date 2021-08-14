@@ -17,7 +17,7 @@ if(process.argv.join(" ").includes("--dev")) {
 	GITHUB_USER = process.env.GITHUB_USER!;
 	GITHUB_TOKEN = process.env.GITHUB_TOKEN!;
 }
-if(!GITHUB_USER) throw new Error("Missing GITHUB_USER valye");
+if(!GITHUB_USER) throw new Error("Missing GITHUB_USER value");
 if(!GITHUB_TOKEN) throw new Error("Missing GITHUB_TOKEN value");
 
 const octo = new Octokit({ auth: GITHUB_TOKEN });
