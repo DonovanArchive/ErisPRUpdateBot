@@ -9,6 +9,7 @@ fs.mkdirpSync(workingDir);
 const ORIGIN_USER = config.checkForUpdates.remotes.origin.split("/").slice(-2)[0];
 let GITHUB_USER: string, GITHUB_TOKEN: string;
 if(process.argv.join(" ").includes("--dev")) {
+	// @ts-ignore -- not present on github
 	const privateConfig = require("../privateConfig.json") as typeof import("../privateConfig.json");
 	GITHUB_USER = privateConfig.GITHUB_USER,
 	GITHUB_TOKEN = privateConfig.GITHUB_TOKEN;
