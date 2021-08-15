@@ -118,6 +118,23 @@
 					"branch": "interactions",
 					"remote": "catboi8"
 				}
+			],
+			"components-interactions": [
+				{
+					"name": "Eris Dev",
+					"branch": "dev",
+					"remote": "main"
+				},
+				{
+					"name": "Expose components (1189)",
+					"branch": "components",
+					"remote": "bsian03"
+				},
+				{
+					"name": "Support Interactions (1210)",
+					"branch": "interactions",
+					"remote": "catboi8"
+				}
 			]
 		},
 		"remotes": {
