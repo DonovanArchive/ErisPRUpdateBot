@@ -61,6 +61,21 @@
 					"name": "Expose audit log events 83-85 (1213)",
 					"branch": "stage",
 					"remote": "bsian03"
+				},
+				{
+					"name": "Warn when invalid intent is supplied (1261)",
+					"branch": "intents",
+					"remote": "bsian03"
+				},
+				{
+					"name": "Ability to manage stickers, guildStickersUpdate and Guild#stickers (1258)",
+					"branch": "stickers_updates",
+					"remote": "iifdct"
+				},
+				{
+					"name": "Update permission flag names to match Discord & update guildEmojisAndStickers intent name (1257)",
+					"branch": "permissions",
+					"remote": "iifdct"
 				}
 			],
 			"v9-components": [
