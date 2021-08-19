@@ -8,44 +8,14 @@
 					"remote": "main"
 				},
 				{
-					"name": "Discord API v9 (1216)",
-					"branch": "v9",
-					"remote": "bsian03"
-				},
-				{
-					"name": "Expose components (1189)",
-					"branch": "components",
-					"remote": "bsian03"
-				},
-				{
 					"name": "Support Interactions (1210)",
 					"branch": "interactions",
 					"remote": "catboi8"
 				},
 				{
-					"name": "Type guild features as actual values (1212)",
-					"branch": "guild-features",
+					"name": "Discord API v9 (1216)",
+					"branch": "v9",
 					"remote": "bsian03"
-				},
-				{
-					"name": "Support guild specific avatars (1219)",
-					"branch": "guild-avatars",
-					"remote": "bsian03"
-				},
-				{
-					"name": "Sticker Sending (1252)",
-					"branch": "sticker-ids",
-					"remote": "donovandmc"
-				},
-				{
-					"name": "Better types for events (1242)",
-					"branch": "types",
-					"remote": "headtrixz"
-				},
-				{
-					"name": "Add support for user banners (1238)",
-					"branch": "user-banners",
-					"remote": "iifdct"
 				},
 				{
 					"name": "Standardized parsing errors (1227)",
@@ -53,46 +23,24 @@
 					"remote": "ljneon"
 				},
 				{
-					"name": "Fix/improve handling of rate limit headers (1256)",
-					"branch": "ratelimits",
-					"remote": "bsian03"
+					"name": "Add support for user banners (1238)",
+					"branch": "user-banners",
+					"remote": "iifdct"
 				},
 				{
-					"name": "Expose audit log events 83-85 (1213)",
-					"branch": "stage",
-					"remote": "bsian03"
+					"name": "Better types for events (1242)",
+					"branch": "types",
+					"remote": "headtrixz"
 				},
 				{
-					"name": "Warn when invalid intent is supplied (1261)",
-					"branch": "intents",
-					"remote": "bsian03"
+					"name": "Sticker Sending (1252)",
+					"branch": "sticker-ids",
+					"remote": "donovandmc"
 				},
 				{
 					"name": "Ability to manage stickers, guildStickersUpdate and Guild#stickers (1258)",
 					"branch": "stickers_updates",
 					"remote": "iifdct"
-				},
-				{
-					"name": "Update permission flag names to match Discord & update guildEmojisAndStickers intent name (1257)",
-					"branch": "permissions",
-					"remote": "iifdct"
-				}
-			],
-			"v9-components": [
-				{
-					"name": "Eris Dev",
-					"branch": "dev",
-					"remote": "main"
-				},
-				{
-					"name": "Discord API v9 (1216)",
-					"branch": "v9",
-					"remote": "bsian03"
-				},
-				{
-					"name": "Expose components (1189)",
-					"branch": "components",
-					"remote": "bsian03"
 				}
 			],
 			"v9-interactions": [
@@ -104,45 +52,6 @@
 				{
 					"name": "Discord API v9 (1216)",
 					"branch": "v9",
-					"remote": "bsian03"
-				},
-				{
-					"name": "Support Interactions (1210)",
-					"branch": "interactions",
-					"remote": "catboi8"
-				}
-			],
-			"v9-components-interactions": [
-				{
-					"name": "Eris Dev",
-					"branch": "dev",
-					"remote": "main"
-				},
-				{
-					"name": "Discord API v9 (1216)",
-					"branch": "v9",
-					"remote": "bsian03"
-				},
-				{
-					"name": "Expose components (1189)",
-					"branch": "components",
-					"remote": "bsian03"
-				},
-				{
-					"name": "Support Interactions (1210)",
-					"branch": "interactions",
-					"remote": "catboi8"
-				}
-			],
-			"components-interactions": [
-				{
-					"name": "Eris Dev",
-					"branch": "dev",
-					"remote": "main"
-				},
-				{
-					"name": "Expose components (1189)",
-					"branch": "components",
 					"remote": "bsian03"
 				},
 				{
