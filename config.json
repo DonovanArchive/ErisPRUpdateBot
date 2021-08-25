@@ -28,14 +28,14 @@
 					"remote": "iifdct"
 				},
 				{
-					"name": "Better types for events (1242)",
-					"branch": "types",
-					"remote": "headtrixz"
-				},
-				{
 					"name": "Sticker Sending (1252)",
 					"branch": "sticker-ids",
 					"remote": "donovandmc"
+				},
+				{
+					"name": "Tweak eslint.ts (1254)",
+					"branch": "fix-dumb-eslint",
+					"remote": "catboi8"
 				},
 				{
 					"name": "Ability to manage stickers, guildStickersUpdate and Guild#stickers (1258)",
@@ -68,7 +68,6 @@
 			"bsian03": "https://github.com/bsian03/eris",
 			"catboi8": "https://github.com/Catboi8/eris",
 			"donovandmc": "https://github.com/DonovanDMC/eris",
-			"headtrixz": "https://github.com/HeadTriXz/eris",
 			"iifdct": "https://github.com/iiFDCT/eris",
 			"ljneon": "https://github.com/LJNeon/eris"
 		}
