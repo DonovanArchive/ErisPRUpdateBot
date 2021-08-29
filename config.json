@@ -41,6 +41,11 @@
 					"name": "Ability to manage stickers, guildStickersUpdate and Guild#stickers (1258)",
 					"branch": "stickers_updates",
 					"remote": "iifdct"
+				},
+				{
+					"name": "Several Constants Changes/Additions (1271)",
+					"branch": "constants",
+					"remote": "donovandmc"
 				}
 			],
 			"v9-interactions": [
