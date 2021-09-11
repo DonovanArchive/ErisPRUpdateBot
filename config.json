@@ -28,11 +28,6 @@
 					"remote": "iifdct"
 				},
 				{
-					"name": "Sticker Sending (1252)",
-					"branch": "sticker-ids",
-					"remote": "donovandmc"
-				},
-				{
 					"name": "Tweak eslint.ts (1254)",
 					"branch": "fix-dumb-eslint",
 					"remote": "catboi8"
