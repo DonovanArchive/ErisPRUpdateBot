@@ -8,16 +8,6 @@
 					"remote": "main"
 				},
 				{
-					"name": "Support Interactions (1210)",
-					"branch": "interactions",
-					"remote": "catboi8"
-				},
-				{
-					"name": "Discord API v9 (1216)",
-					"branch": "v9",
-					"remote": "bsian03"
-				},
-				{
 					"name": "Standardized parsing errors (1227)",
 					"branch": "dev",
 					"remote": "ljneon"
@@ -43,7 +33,37 @@
 					"remote": "donovandmc"
 				},
 				{
-					"name": "File Changes (1273)",
+					"name": "Guild Scheduled Events (1275)",
+					"branch": "guild-events",
+					"remote": "loliticos"
+				},
+				{
+					"name": "Use process warnings for deprecations (1276)",
+					"branch": "deprecation-process-warnings",
+					"remote": "eritbh"
+				},
+				{
+					"name": "make id optional for some events (1277)",
+					"branch": "event-types",
+					"remote": "donovandmc"
+				},
+				{
+					"name": "Role icon support (1278)",
+					"branch": "role-icons",
+					"remote": "iifdct"
+				},
+				{
+					"name": "Discord API v9 (1279)",
+					"branch": "v9",
+					"remote": "bsian03"
+				},
+				{
+					"name": "Support Interactions (1280)",
+					"branch": "interactions",
+					"remote": "catboi8"
+				},
+				{
+					"name": "File Changes (1281)",
 					"branch": "file-updates",
 					"remote": "catboi8"
 				}
@@ -55,12 +75,12 @@
 					"remote": "main"
 				},
 				{
-					"name": "Discord API v9 (1216)",
+					"name": "Discord API v9 (1279)",
 					"branch": "v9",
 					"remote": "bsian03"
 				},
 				{
-					"name": "Support Interactions (1210)",
+					"name": "Support Interactions (1280)",
 					"branch": "interactions",
 					"remote": "catboi8"
 				}
@@ -74,7 +94,9 @@
 			"catboi8": "https://github.com/Catboi8/eris",
 			"donovandmc": "https://github.com/DonovanDMC/eris",
 			"iifdct": "https://github.com/iiFDCT/eris",
-			"ljneon": "https://github.com/LJNeon/eris"
+			"ljneon": "https://github.com/LJNeon/eris",
+			"loliticos": "https://github.com/Loliticos/eris",
+			"eritbh": "https://github.com/eritbh/eris"
 		}
 	}
 }
