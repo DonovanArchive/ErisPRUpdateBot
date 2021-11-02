@@ -13,21 +13,6 @@
 					"remote": "ljneon"
 				},
 				{
-					"name": "Add support for user banners (1238)",
-					"branch": "user-banners",
-					"remote": "iifdct"
-				},
-				{
-					"name": "Tweak eslint.ts (1254)",
-					"branch": "fix-dumb-eslint",
-					"remote": "catboi8"
-				},
-				{
-					"name": "Ability to manage stickers, guildStickersUpdate and Guild#stickers (1258)",
-					"branch": "stickers_updates",
-					"remote": "iifdct"
-				},
-				{
 					"name": "Several Constants Changes/Additions (1271)",
 					"branch": "constants",
 					"remote": "donovandmc"
@@ -48,23 +33,18 @@
 					"remote": "donovandmc"
 				},
 				{
-					"name": "Role icon support (1278)",
-					"branch": "role-icons",
-					"remote": "iifdct"
-				},
-				{
 					"name": "Discord API v9 (1279)",
 					"branch": "v9",
+					"remote": "donovandmc"
+				},
+				{
+					"name": "Prevent heartbeat during identify (1290)",
+					"branch": "gateway",
 					"remote": "bsian03"
 				},
 				{
-					"name": "Support Interactions (1280)",
-					"branch": "interactions",
-					"remote": "catboi8"
-				},
-				{
-					"name": "File Changes (1281)",
-					"branch": "file-updates",
+					"name": "Interactions MinMax (1292)",
+					"branch": "interactions-minmax",
 					"remote": "catboi8"
 				}
 			],
@@ -80,8 +60,8 @@
 					"remote": "bsian03"
 				},
 				{
-					"name": "Support Interactions (1280)",
-					"branch": "interactions",
+					"name": "Interactions MinMax (1292)",
+					"branch": "interactions-minmax",
 					"remote": "catboi8"
 				}
 			]
