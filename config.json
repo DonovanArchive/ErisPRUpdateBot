@@ -38,11 +38,6 @@
 					"remote": "donovandmc"
 				},
 				{
-					"name": "Prevent heartbeat during identify (1290)",
-					"branch": "gateway",
-					"remote": "bsian03"
-				},
-				{
 					"name": "Interactions MinMax (1292)",
 					"branch": "interactions-minmax",
 					"remote": "catboi8"
