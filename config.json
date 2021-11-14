@@ -33,28 +33,6 @@
 					"remote": "donovandmc"
 				},
 				{
-					"name": "Discord API v9 (1279)",
-					"branch": "v9",
-					"remote": "donovandmc"
-				},
-				{
-					"name": "Interactions MinMax (1292)",
-					"branch": "interactions-minmax",
-					"remote": "catboi8"
-				}
-			],
-			"v9-interactions": [
-				{
-					"name": "Eris Dev",
-					"branch": "dev",
-					"remote": "main"
-				},
-				{
-					"name": "Discord API v9 (1279)",
-					"branch": "v9",
-					"remote": "bsian03"
-				},
-				{
 					"name": "Interactions MinMax (1292)",
 					"branch": "interactions-minmax",
 					"remote": "catboi8"
@@ -65,11 +43,8 @@
 			"origin": "https://github.com/DonovanDMC/eris",
 			"main": "https://github.com/abalabahaha/eris",
 			"self": "https://github.com/ErisPRUpdateBot/eris",
-			"bsian03": "https://github.com/bsian03/eris",
 			"catboi8": "https://github.com/Catboi8/eris",
 			"donovandmc": "https://github.com/DonovanDMC/eris",
-			"iifdct": "https://github.com/iiFDCT/eris",
-			"ljneon": "https://github.com/LJNeon/eris",
 			"loliticos": "https://github.com/Loliticos/eris",
 			"eritbh": "https://github.com/eritbh/eris"
 		}
