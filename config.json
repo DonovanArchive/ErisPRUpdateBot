@@ -13,29 +13,19 @@
 					"remote": "ljneon"
 				},
 				{
-					"name": "Several Constants Changes/Additions (1271)",
-					"branch": "constants",
-					"remote": "donovandmc"
-				},
-				{
 					"name": "Guild Scheduled Events (1275)",
 					"branch": "guild-events",
 					"remote": "loliticos"
 				},
 				{
-					"name": "Use process warnings for deprecations (1276)",
-					"branch": "deprecation-process-warnings",
-					"remote": "eritbh"
-				},
-				{
-					"name": "make id optional for some events (1277)",
-					"branch": "event-types",
+					"name": "Various Interactions Changes (1309)",
+					"branch": "interactions-rewrite",
 					"remote": "donovandmc"
 				},
 				{
-					"name": "Interactions MinMax (1292)",
-					"branch": "interactions-minmax",
-					"remote": "catboi8"
+					"name": "Fix typing for `Message.createThreadWithMessage` (1311)",
+					"branch": "frobinsonj-patch-1",
+					"remote": "frobinsonj"
 				}
 			]
 		},
@@ -43,11 +33,10 @@
 			"origin": "https://github.com/DonovanDMC/eris",
 			"main": "https://github.com/abalabahaha/eris",
 			"self": "https://github.com/ErisPRUpdateBot/eris",
-			"catboi8": "https://github.com/Catboi8/eris",
 			"ljneon": "https://github.com/LJNeon/eris",
 			"donovandmc": "https://github.com/DonovanDMC/eris",
 			"loliticos": "https://github.com/Loliticos/eris",
-			"eritbh": "https://github.com/eritbh/eris"
+			"frobinsonj": "https://github.com/frobinsonj/eris"
 		}
 	}
 }
