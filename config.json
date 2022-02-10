@@ -8,6 +8,11 @@
 					"remote": "main"
 				},
 				{
+					"name": "Allow configuring RequestHandler to use HTTP instead of HTTPS (1193)",
+					"branch": "master",
+					"remote": "molenzwiebel"
+				},
+				{
 					"name": "Standardized parsing errors (1227)",
 					"branch": "dev",
 					"remote": "ljneon"
@@ -18,14 +23,44 @@
 					"remote": "loliticos"
 				},
 				{
-					"name": "Various Interactions Changes (1309)",
+					"name": "fix(typings): add static keyword for Interaction.from (1305)",
+					"branch": "interactions-docs",
+					"remote": "bsian03"
+				},
+				{
+					"name": "refactor(interactions): Redo types and remove unnecessary data (1309)",
 					"branch": "interactions-rewrite",
 					"remote": "donovandmc"
 				},
 				{
-					"name": "Fix typing for `Message.createThreadWithMessage` (1311)",
-					"branch": "frobinsonj-patch-1",
-					"remote": "frobinsonj"
+					"name": "fix(interactions): Missing file redirect in createMessage (1314)",
+					"branch": "interactions",
+					"remote": "bsian03"
+				},
+				{
+					"name": "fix(Member): Parse Member#premiumSince to timestamp (1318)",
+					"branch": "premiumSince",
+					"remote": "bsian03"
+				},
+				{
+					"name": "Fix bitwise overflow (1323)",
+					"branch": "fix-overflow",
+					"remote": "james58899"
+				},
+				{
+					"name": "fix(slash): Snake case defaultPermissions to payload (1325)",
+					"branch": "command",
+					"remote": "bsian03"
+				},
+				{
+					"name": "Allows multiple channel position changes in a single request (1328)",
+					"branch": "master",
+					"remote": "xaxim"
+				},
+				{
+					"name": "Interaction Locales (1335)",
+					"branch": "interactions-locale",
+					"remote": "donovandmc"
 				}
 			]
 		},
@@ -36,7 +71,11 @@
 			"ljneon": "https://github.com/LJNeon/eris",
 			"donovandmc": "https://github.com/DonovanDMC/eris",
 			"loliticos": "https://github.com/Loliticos/eris",
-			"frobinsonj": "https://github.com/frobinsonj/eris"
+			"frobinsonj": "https://github.com/frobinsonj/eris",
+			"molenzwiebel": "https://github.com/molenzwiebel/eris",
+			"bsian03": "https://github.com/bsian03/eris",
+			"james58899": "https://github.com/james58899/eris",
+			"xaxim": "https://github.com/xaxim/eris"
 		}
 	}
 }
