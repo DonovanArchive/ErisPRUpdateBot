@@ -24,7 +24,7 @@
 				},
 				{
 					"name": "fix(typings): add static keyword for Interaction.from (1305)",
-					"branch": "interactions-docs",
+					"branch": "interaction-docs",
 					"remote": "bsian03"
 				},
 				{
