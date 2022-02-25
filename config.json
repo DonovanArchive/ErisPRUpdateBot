@@ -61,6 +61,11 @@
 					"name": "Interaction Locales (1335)",
 					"branch": "interactions-locale",
 					"remote": "donovandmc"
+				},
+				{
+					"name": "Support modals (1336)",
+					"branch": "modals",
+					"remote": "linker-123"
 				}
 			]
 		},
@@ -75,7 +80,8 @@
 			"molenzwiebel": "https://github.com/molenzwiebel/eris",
 			"bsian03": "https://github.com/bsian03/eris",
 			"james58899": "https://github.com/james58899/eris",
-			"xaxim": "https://github.com/xaxim/eris"
+			"xaxim": "https://github.com/xaxim/eris",
+			"linker-123": "https://github.com/Linker-123/eris-1"
 		}
 	}
 }
