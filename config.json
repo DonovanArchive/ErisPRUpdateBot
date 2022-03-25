@@ -28,11 +28,6 @@
 					"remote": "bsian03"
 				},
 				{
-					"name": "refactor(interactions): Redo types and remove unnecessary data (1309)",
-					"branch": "interactions-rewrite",
-					"remote": "donovandmc"
-				},
-				{
 					"name": "fix(interactions): Missing file redirect in createMessage (1314)",
 					"branch": "interactions",
 					"remote": "bsian03"
@@ -58,14 +53,26 @@
 					"remote": "xaxim"
 				},
 				{
-					"name": "Interaction Locales (1335)",
-					"branch": "interactions-locale",
+					"name": "Interaction Merge (1309 & 1335)",
+					"branch": "interactions",
 					"remote": "donovandmc"
 				},
 				{
 					"name": "Support modals (1336)",
 					"branch": "modals",
 					"remote": "linker-123"
+				}
+			],
+			"interactions": [
+				{
+					"name": "Eris Dev",
+					"branch": "dev",
+					"remote": "main"
+				},
+				{
+					"name": "refactor(interactions): Redo types and remove unnecessary data (1309)",
+					"branch": "interactions-rewrite",
+					"remote": "donovandmc"
 				}
 			]
 		},
