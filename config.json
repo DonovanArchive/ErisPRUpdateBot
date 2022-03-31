@@ -43,11 +43,6 @@
 					"remote": "bsian03"
 				},
 				{
-					"name": "Fix bitwise overflow (1323)",
-					"branch": "fix-overflow",
-					"remote": "james58899"
-				},
-				{
 					"name": "fix(slash): Snake case defaultPermissions to payload (1325)",
 					"branch": "command",
 					"remote": "bsian03"
