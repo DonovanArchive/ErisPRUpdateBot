@@ -5,7 +5,7 @@
 				{
 					"name": "Eris Dev",
 					"branch": "dev",
-					"remote": "main"
+					"remote": "upstream"
 				},
 				{
 					"name": "Allow configuring RequestHandler to use HTTP instead of HTTPS (1193)",
@@ -23,13 +23,13 @@
 					"remote": "loliticos"
 				},
 				{
-					"name": "fix(typings): add static keyword for Interaction.from (1305)",
-					"branch": "interaction-docs",
-					"remote": "bsian03"
+					"name": "Add token checks when constructing client (1283)",
+					"branch": "token-check",
+					"remote": "catboi8"
 				},
 				{
-					"name": "fix(interactions): Missing file redirect in createMessage (1314)",
-					"branch": "interactions",
+					"name": "Rework file attachments (1285)",
+					"branch": "form-data",
 					"remote": "bsian03"
 				},
 				{
@@ -38,9 +38,9 @@
 					"remote": "bsian03"
 				},
 				{
-					"name": "fix(slash): Snake case defaultPermissions to payload (1325)",
-					"branch": "command",
-					"remote": "bsian03"
+					"name": "Try to fix receive stream event lost after reconnect (1332)",
+					"branch": "fix-receive-event",
+					"remote": "jimchen5209"
 				},
 				{
 					"name": "Allows multiple channel position changes in a single request (1328)",
@@ -56,13 +56,80 @@
 					"name": "Support modals (1336)",
 					"branch": "modals",
 					"remote": "linker-123"
+				},
+				{
+					"name": "Handle Shared Ratelimits & Parse retryAfter Correctly (1344)",
+					"branch": "share-ratelimit-patch",
+					"remote": "curtisf"
+				},
+				{
+					"name": "fix(typings): outdated `EventListeners.channelCreate` type (1351)",
+					"branch": "dev",
+					"remote": "thetimtoy"
+				},
+				{
+					"name": "fix(constants): Include manageThreads, manageEvents in Permissions.all (1355)",
+					"branch": "fix/events-threads-guild-permissions",
+					"remote": "eritbh"
+				},
+				{
+					"name": "Attachment type (1358)",
+					"branch": "attachments-type",
+					"remote": "coolcalcacol"
+				},
+				{
+					"name": "fix(Message): Jumplink throwing on DM messages (1359)",
+					"branch": "jumplink",
+					"remote": "bsian03"
+				},
+				{
+					"name": "Support guild bans pagination (1363)",
+					"branch": "guild-bans",
+					"remote": "headtrixz"
+				},
+				{
+					"name": "fix updating bot username, avatar, discriminator returns undefined (1366)",
+					"branch": "patch-1",
+					"remote": "dramex"
+				},
+				{
+					"name": "fix(getGuildAuditLog): Users Being Added To Cache Too late (1367)",
+					"branch": "fix-audit-log-users",
+					"remote": "donovandmc"
+				},
+				{
+					"name": "Corrected various typings (1368)",
+					"branch": "dev",
+					"remote": "oathompsonjones"
+				},
+				{
+					"name": "Adding support for type 24 message (1369)",
+					"branch": "dev",
+					"remote": "flamableassassin"
+				},
+				{
+					"name": "Improved max_concurrency aware ShardManager (1370)",
+					"branch": "concurSharding",
+					"remote": "hcgrandon"
+				}
+			],
+			"everything-v10": [
+				{
+					"name": "Everything",
+					"branch": "everything",
+					"remote": "donovandmc"
+				},
+				{
+					"name": "API v10 changes (1341)",
+					"branch": "dev",
+					"remote": "coolcalcacol"
 				}
 			],
 			"interactions": [
 				{
 					"name": "Eris Dev",
 					"branch": "dev",
-					"remote": "main"
+					"remote": "upstream"
 				},
 				{
 					"name": "refactor(interactions): Redo types and remove unnecessary data (1309)",
@@ -73,17 +140,27 @@
 		},
 		"remotes": {
 			"origin": "https://github.com/DonovanDMC/eris",
-			"main": "https://github.com/abalabahaha/eris",
 			"self": "https://github.com/ErisPRUpdateBot/eris",
-			"ljneon": "https://github.com/LJNeon/eris",
-			"donovandmc": "https://github.com/DonovanDMC/eris",
-			"loliticos": "https://github.com/Loliticos/eris",
-			"frobinsonj": "https://github.com/frobinsonj/eris",
+			"upstream": "https://github.com/abalabahaha/eris",
 			"molenzwiebel": "https://github.com/molenzwiebel/eris",
+			"ljneon": "https://github.com/LJNeon/eris",
+			"loliticos": "https://github.com/Loliticos/eris",
+			"catboi8": "https://github.com/Catboi8/eris",
 			"bsian03": "https://github.com/bsian03/eris",
-			"james58899": "https://github.com/james58899/eris",
 			"xaxim": "https://github.com/xaxim/eris",
+			"jimchen5209": "https://github.com/jimchen5209/eris",
+			"donovandmc": "https://github.com/DonovanDMC/eris",,
 			"linker-123": "https://github.com/Linker-123/eris-1"
+			"curtisf": "https://github.com/curtisf/eris",
+			"thetimtoy": "https://github.com/thetimtoy/eris",
+			"eritbh": "https://github.com/eritbh/eris",
+			"coolcalcacol": "https://github.com/coolcalcacol/eris",
+			"headtricz": "https://github.com/HeadTriXz/eris-1",
+			"dramex": "https://github.com/Dramex/eris",
+			"coolcalcacol": "https://github.com/coolcalcacol/eris",
+			"oathompsonjones": "https://github.com/oathompsonjones/eris",
+			"flamableassassin": "https://github.com/flamableassassin/eris",
+			"hcgrandon": "https://github.com/HcgRandon/eris",
 		}
 	}
 }
