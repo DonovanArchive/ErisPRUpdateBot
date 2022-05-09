@@ -105,6 +105,14 @@ for (const pr of pulls) {
 		const cur = currentPulls.find(p =>  p.head.label === `${config.self.owner}:${prBranch}`);
 		if (cur && !(cur.state === "closed" && change)) {
 			console.log("Pull request for PR #%d (%s) already exists (#%d, %s), skipping..", pr.number, pr.html_url, cur.number, cur.html_url);
+			if (change) {
+				await octo.request("PATCH /repos/{owner}/{repo}/pulls/{pull_number}", {
+					owner:       pr.head.repo.owner.login,
+					repo:        pr.head.repo.name,
+					pull_number: cur.number,
+					body:        `The \`${pr.head.ref}\` branch is behind by ${behindBy >= 100 ? "100+" : behindBy} commit${behindBy === 1 ? "" : "s"}.\n\n<sup>This pull request was created automatically. If you wish to be excluded from automatic pr creation, open an issue [here](https://github.com/DonovanDMC/ErisPRUpdateBot/issues/new?assignees=DonovanDMC&labels=&template=exclude-from-automatic-pr-creation.md&title=Automatic+PR+Creation+Exclusion+Request) or contact [@DonovanDMC](https://github.com/DonovanDMC).</sup>`
+				});
+			}
 			continue;
 		} else {
 			const { data: pull } = await octo.request("POST /repos/{owner}/{repo}/pulls", {
