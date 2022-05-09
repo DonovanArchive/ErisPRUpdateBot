@@ -109,8 +109,8 @@ for (const pr of pulls) {
 				title:                 "Upstream Update",
 				head:                  `${config.self.owner}:${prBranch}`,
 				base:                  pr.head.ref,
-				maintainer_can_modify: true,
-				body:                  "If you wish to be excluded from automatic pr creation, open an issue [here](https://github.com/DonovanDMC/ErisPRUpdateBot/issues/new?&template=exclude-from-automatic-pr-creation.md&title=Automatic+PR+Creation+Exclusion+Request)."
+				body:                  `The branch \`${pr.head.ref}\` is behind by ${behindBy >= 100 ? "100+" : behindBy} commit${behindBy === 1 ? "" : "s"}.\n\n<sup>If you wish to be excluded from automatic pr creation, open an issue [here](https://github.com/DonovanDMC/ErisPRUpdateBot/issues/new?&template=exclude-from-automatic-pr-creation.md&title=Automatic+PR+Creation+Exclusion+Request).</sup>`,
+				maintainer_can_modify: true
 			});
 			console.log("Created pull request for PR #%d (%s): #%d (%s)", pr.number, pr.html_url, pull.number, pull.html_url);
 		}
