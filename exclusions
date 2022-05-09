@@ -1,0 +1,2 @@
+# To be excluded from automatic pull requests when your pr is behind dev, simply an issue stating so, or
+# create a pull request that adds your name on a new line in this file

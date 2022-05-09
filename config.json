@@ -136,27 +136,6 @@
 					"branch": "interactions-rewrite",
 					"remote": "donovandmc"
 				}
-			],
-			"interactions-rewrite": [
-				{
-					"name": "Eris Dev",
-					"branch": "dev",
-					"remote": "upstream"
-				}
-			],
-			"interactions-locale": [
-				{
-					"name": "Eris Dev",
-					"branch": "dev",
-					"remote": "upstream"
-				}
-			],
-			"fix-audit-log-users": [
-				{
-					"name": "Eris Dev",
-					"branch": "dev",
-					"remote": "upstream"
-				}
 			]
 		},
 		"remotes": {

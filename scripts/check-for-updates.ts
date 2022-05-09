@@ -3,15 +3,18 @@ import * as fs from "fs-extra";
 import simpleGit from "simple-git/promise";
 import { Octokit } from "@octokit/rest";
 import { execSync } from "child_process";
+import { readFile } from "fs/promises";
 const workingDir = `${__dirname}/../run`;
 fs.mkdirpSync(workingDir);
 
 const ORIGIN_USER = config.checkForUpdates.remotes.origin.split("/").slice(-2)[0];
 let GITHUB_USER: string, GITHUB_TOKEN: string;
 if (process.argv.join(" ").includes("--dev")) {
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-ignore -- not present on github
-	const privateConfig = require("../privateConfig.json") as typeof import("../privateConfig.json");
-	GITHUB_USER = privateConfig.GITHUB_USER,
+	// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+	const privateConfig = JSON.parse((await readFile(new URL("../privateConfig.json", import.meta.url))).toString()) as typeof import("../privateConfig.json");
+	GITHUB_USER = privateConfig.GITHUB_USER;
 	GITHUB_TOKEN = privateConfig.GITHUB_TOKEN;
 } else {
 	GITHUB_USER = process.env.GITHUB_USER!;
@@ -42,7 +45,7 @@ process.nextTick(async() => {
 
 	const pulls = await octo.request("GET /repos/{owner}/{repo}/pulls", {
 		owner: ORIGIN_USER,
-		repo: "eris"
+		repo:  "eris"
 	});
 
 	const prRefList = pulls.data.map(d => d.head.ref);
@@ -85,11 +88,11 @@ process.nextTick(async() => {
 					await git.checkout(prBranch);
 					await git.push("self", prBranch);
 					const pr = await octo.request("POST /repos/{owner}/{repo}/pulls", {
-						owner: ORIGIN_USER,
-						repo: "eris",
-						title: `Remote Update (${branch}): ${remote}/${refBranch}`,
-						head: `${process.env.GITHUB_USER}:${prBranch}`,
-						base: branch,
+						owner:                 ORIGIN_USER,
+						repo:                  "eris",
+						title:                 `Remote Update (${branch}): ${remote}/${refBranch}`,
+						head:                  `${GITHUB_USER}:${prBranch}`,
+						base:                  branch,
 						maintainer_can_modify: true
 					});
 					console.log(`Created pull request for "${name}", ${pr.data.html_url}`);
@@ -100,21 +103,21 @@ process.nextTick(async() => {
 
 					// check for pull requests with a branch of one of our commit hashes
 					// (new commits since last)
-					const prDupRef = prRefList.filter(ref => branchHashes.some(hash => ref === `${remote}/${refBranch}/${branch}/${hash}`));
+					const prDupRef = prRefList.filter(ref => branchHashes.some(h => ref === `${remote}/${refBranch}/${branch}/${h}`));
 					for (const dup of prDupRef) {
 						const oldPr = pulls.data.find(p => p.head.ref === dup)!.number;
 						console.log(`(${remote}/${refBranch}) Closing old pull request #${oldPr}`);
 						await octo.request("POST /repos/{owner}/{repo}/issues/{issue_number}/comments", {
-							owner: ORIGIN_USER,
-							repo: "eris",
+							owner:        ORIGIN_USER,
+							repo:         "eris",
 							issue_number: oldPr,
-							body: `This pull request has been superseded by #${pr.data.number}`
+							body:         `This pull request has been superseded by #${pr.data.number}`
 						});
 						await octo.request("PATCH /repos/{owner}/{repo}/pulls/{pull_number}", {
-							owner: ORIGIN_USER,
-							repo: "eris",
+							owner:       ORIGIN_USER,
+							repo:        "eris",
 							pull_number: oldPr,
-							state: "closed"
+							state:       "closed"
 						});
 						await git.push(["self", "--delete", dup]).catch(() => null);
 					}
