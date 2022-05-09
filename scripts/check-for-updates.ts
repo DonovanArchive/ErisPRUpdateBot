@@ -5,7 +5,7 @@ import simpleGit from "simple-git";
 import { Octokit } from "@octokit/rest";
 import { execSync } from "child_process";
 import { readFile } from "fs/promises";
-const workingDir = `${__dirname}/../run`;
+const { pathname: workingDir } = new URL("../run", import.meta.url);
 fs.mkdirpSync(workingDir);
 
 const ORIGIN_USER = config.remotes.origin.split("/").slice(-2)[0];
