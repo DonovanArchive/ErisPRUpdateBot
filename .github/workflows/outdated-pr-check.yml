@@ -1,0 +1,21 @@
+name: Outdated PR Check
+
+on:
+  schedule:
+    - cron: '0 */12 * * *'
+  workflow_dispatch:
+
+jobs:
+  check:
+    name: Outdated PR Check
+    runs-on: ubuntu-latest
+    steps:
+     - name: Checkout
+       uses: actions/checkout@v2
+     - run: npm i
+     - name: Run
+       run: node --no-warnings --no-deprecation --experimental-specifier-resolution=node --loader ts-node/esm scripts/global-checks.ts
+       env:
+        GITHUB_USER: '${{ secrets.USER }}'
+        GITHUB_TOKEN: '${{ secrets.TOKEN }}'
+    
