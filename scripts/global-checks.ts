@@ -1,22 +1,25 @@
+import cnf from "../config.json";
+const config = cnf.outdatedPRCheck;
 import { Octokit } from "@octokit/rest";
 import { mkdirp } from "fs-extra";
 import simpleGit from "simple-git";
 import { readFile, rm } from "fs/promises";
 import { execSync } from "child_process";
-const config = {
-	upstream: {
-		owner:  "abalabahaha",
-		repo:   "eris",
-		branch: "dev"
-	},
-	self: {
-		owner: "ErisPRUpdateBot",
-		repo:  "eris"
-	},
-	user:  "ErisPRUpdateBot",
-	token: "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"
-};
-const octo = new Octokit({ auth: config.token });
+let GITHUB_USER: string, GITHUB_TOKEN: string;
+if (!process.env.GITHUB_USER || !process.env.GITHUB_TOKEN) {
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+	// @ts-ignore -- not present on github
+	// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+	const privateConfig = JSON.parse((await readFile(new URL("../privateConfig.json", import.meta.url))).toString()) as typeof import("../privateConfig.json");
+	GITHUB_USER = privateConfig.GITHUB_USER;
+	GITHUB_TOKEN = privateConfig.GITHUB_TOKEN;
+} else {
+	GITHUB_USER = process.env.GITHUB_USER!;
+	GITHUB_TOKEN = process.env.GITHUB_TOKEN!;
+}
+if (!GITHUB_USER) throw new Error("Missing GITHUB_USER value");
+if (!GITHUB_TOKEN) throw new Error("Missing GITHUB_TOKEN value");
+const octo = new Octokit({ auth: GITHUB_TOKEN });
 const { pathname: workingDir } = new URL("../run", import.meta.url);
 await rm(workingDir, { force: true, recursive: true });
 await mkdirp(workingDir);
@@ -26,7 +29,7 @@ await git
 	.addRemote("self", `https://github.com/${config.self.owner}/${config.self.repo}`)
 	.addRemote("upstream", `https://github.com/${config.upstream.owner}/${config.upstream.repo}`)
 	.fetch("upstream", config.upstream.branch);
-execSync(`git config --local credential.helper '!f() { sleep 1; echo "username=${config.user}"; echo "password=${config.token}"; }; f'`, {
+execSync(`git config --local credential.helper '!f() { sleep 1; echo "username=${GITHUB_USER}"; echo "password=${GITHUB_TOKEN}"; }; f'`, {
 	cwd: workingDir
 });
 
@@ -46,6 +49,7 @@ const { data: upstreamCommits } = await octo.request("GET /repos/{owner}/{repo}/
 const upstreamLatest = upstreamCommits[0].sha;
 for (const pr of pulls) {
 	try {
+		if (pr.number !== 1363) continue;
 		if (pr.user === null || !pr.user.login) {
 			console.log("Skipping PR #%d (%s) due to user not being present", pr.number, pr.html_url);
 			continue;

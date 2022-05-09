@@ -161,5 +161,16 @@
 			"flamableassassin": "https://github.com/flamableassassin/eris",
 			"hcgrandon": "https://github.com/HcgRandon/eris"
 		}
+	},
+	"outdatedPRCheck": {
+		"upstream": {
+			"owner": "abalabahaha",
+			"repo": "eris",
+			"branch": "dev"
+		},
+		"self": {
+			"owner": "ErisPRUpdateBot",
+			"repo": "eris"
+		}
 	}
 }

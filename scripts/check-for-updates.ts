@@ -1,4 +1,5 @@
-import config from "../config.json";
+import cnf from "../config.json";
+const config = cnf.checkForUpdates;
 import * as fs from "fs-extra";
 import simpleGit from "simple-git/promise";
 import { Octokit } from "@octokit/rest";
@@ -7,7 +8,7 @@ import { readFile } from "fs/promises";
 const workingDir = `${__dirname}/../run`;
 fs.mkdirpSync(workingDir);
 
-const ORIGIN_USER = config.checkForUpdates.remotes.origin.split("/").slice(-2)[0];
+const ORIGIN_USER = config.remotes.origin.split("/").slice(-2)[0];
 let GITHUB_USER: string, GITHUB_TOKEN: string;
 if (process.argv.join(" ").includes("--dev")) {
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -26,14 +27,14 @@ if (!GITHUB_TOKEN) throw new Error("Missing GITHUB_TOKEN value");
 const octo = new Octokit({ auth: GITHUB_TOKEN });
 
 process.nextTick(async() => {
-	const b = Object.entries(config.checkForUpdates.branches);
-	const r = Object.entries(config.checkForUpdates.remotes);
+	const b = Object.entries(config.branches);
+	const r = Object.entries(config.remotes);
 
 	// setup
 	const git = simpleGit(workingDir);
 
 	// clone
-	await git.clone(config.checkForUpdates.remotes.origin, ".");
+	await git.clone(config.remotes.origin, ".");
 	execSync(`git config --local credential.helper '!f() { sleep 1; echo "username=${GITHUB_USER}"; echo "password=${GITHUB_TOKEN}"; }; f'`, {
 		cwd: workingDir
 	});
@@ -41,7 +42,7 @@ process.nextTick(async() => {
 	// override it
 	await git.removeRemote("origin");
 	// add remotes
-	for (const [name, url] of r) await git.addRemote(name, url/* `https://${config.checkForUpdates.auth.user}:${config.checkForUpdates.auth.token}@${url.slice(8)}` */);
+	for (const [name, url] of r) await git.addRemote(name, url/* `https://${config.auth.user}:${config.auth.token}@${url.slice(8)}` */);
 
 	const pulls = await octo.request("GET /repos/{owner}/{repo}/pulls", {
 		owner: ORIGIN_USER,
