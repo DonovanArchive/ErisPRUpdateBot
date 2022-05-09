@@ -49,7 +49,6 @@ const { data: upstreamCommits } = await octo.request("GET /repos/{owner}/{repo}/
 const upstreamLatest = upstreamCommits[0].sha;
 for (const pr of pulls) {
 	try {
-		if (pr.number !== 1363) continue;
 		if (pr.user === null || !pr.user.login) {
 			console.log("Skipping PR #%d (%s) due to user not being present", pr.number, pr.html_url);
 			continue;
@@ -110,7 +109,7 @@ for (const pr of pulls) {
 					owner:       pr.head.repo.owner.login,
 					repo:        pr.head.repo.name,
 					pull_number: cur.number,
-					body:        `The \`${pr.head.ref}\` branch is behind by ${behindBy >= 100 ? "100+" : behindBy} commit${behindBy === 1 ? "" : "s"}.\n\n<sup>This pull request was created automatically. If you wish to be excluded from automatic pr creation, open an issue [here](https://github.com/DonovanDMC/ErisPRUpdateBot/issues/new?assignees=DonovanDMC&labels=&template=exclude-from-automatic-pr-creation.md&title=Automatic+PR+Creation+Exclusion+Request) or contact [Donovan_DMC](https://github.com/DonovanDMC).</sup>`
+					body:        `The \`${pr.head.ref}\` branch is ${behindBy >= 100 ? "100+" : behindBy} commit${behindBy === 1 ? "" : "s"} behind [${config.upstream.branch}](https://github.com/${config.upstream.owner}/${config.upstream.repo}/tree/${config.upstream.branch}).\n\n<sup>This pull request was created automatically. If you wish to be excluded from automatic pr creation, open an issue [here](https://github.com/DonovanDMC/ErisPRUpdateBot/issues/new?assignees=DonovanDMC&labels=&template=exclude-from-automatic-pr-creation.md&title=Automatic+PR+Creation+Exclusion+Request). Contact [DonovanDMC](https://github.com/DonovanDMC) if you find any other issues.</sup>`
 				});
 			}
 			continue;
@@ -118,10 +117,10 @@ for (const pr of pulls) {
 			const { data: pull } = await octo.request("POST /repos/{owner}/{repo}/pulls", {
 				owner:                 pr.head.repo.owner.login,
 				repo:                  pr.head.repo.name,
-				title:                 "Upstream Update",
+				title:                 `Upstream Update (${pr.head.ref})`,
 				head:                  `${config.self.owner}:${prBranch}`,
 				base:                  pr.head.ref,
-				body:                  `The \`${pr.head.ref}\` branch is behind by ${behindBy >= 100 ? "100+" : behindBy} commit${behindBy === 1 ? "" : "s"}.\n\n<sup>This pull request was created automatically. If you wish to be excluded from automatic pr creation, open an issue [here](https://github.com/DonovanDMC/ErisPRUpdateBot/issues/new?assignees=DonovanDMC&labels=&template=exclude-from-automatic-pr-creation.md&title=Automatic+PR+Creation+Exclusion+Request) or contact [Donovan_DMC](https://github.com/DonovanDMC).</sup>`,
+				body:                  `The \`${pr.head.ref}\` branch is ${behindBy >= 100 ? "100+" : behindBy} commit${behindBy === 1 ? "" : "s"} behind [${config.upstream.branch}](https://github.com/${config.upstream.owner}/${config.upstream.repo}/tree/${config.upstream.branch}).\n\n<sup>This pull request was created automatically. If you wish to be excluded from automatic pr creation, open an issue [here](https://github.com/DonovanDMC/ErisPRUpdateBot/issues/new?assignees=DonovanDMC&labels=&template=exclude-from-automatic-pr-creation.md&title=Automatic+PR+Creation+Exclusion+Request). Contact [DonovanDMC](https://github.com/DonovanDMC) if you find any other issues.</sup>`,
 				maintainer_can_modify: true
 			});
 			console.log("Created pull request for PR #%d (%s): #%d (%s)", pr.number, pr.html_url, pull.number, pull.html_url);
