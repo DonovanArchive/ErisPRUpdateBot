@@ -1,7 +1,7 @@
 import cnf from "../config.json";
 const config = cnf.checkForUpdates;
 import * as fs from "fs-extra";
-import simpleGit from "simple-git/promise";
+import simpleGit from "simple-git";
 import { Octokit } from "@octokit/rest";
 import { execSync } from "child_process";
 import { readFile } from "fs/promises";
