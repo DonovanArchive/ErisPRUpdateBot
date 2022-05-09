@@ -57,7 +57,6 @@ for (const pr of pulls) {
 			console.log("Skipping PR #%d (%s) due to author (%s) being in exclusions list.", pr.number, pr.html_url, pr.user.login);
 			continue;
 		}
-		// console.log(pr.html_url, pr.state, pr.user?.login);
 
 		const { data: commits } = await octo.request("GET /repos/{owner}/{repo}/commits", {
 			owner:    pr.head.repo.owner.login,
