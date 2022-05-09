@@ -2,11 +2,10 @@ import cnf from "../config.json";
 const config = cnf.checkForUpdates;
 import simpleGit from "simple-git";
 import { Octokit } from "@octokit/rest";
-import mkdirp from "mkdirp";
 import { execSync } from "child_process";
-import { readFile, rm } from "fs/promises";
+import { mkdir, readFile, rm } from "fs/promises";
 const { pathname: workingDir } = new URL("../run", import.meta.url);
-await mkdirp(workingDir);
+await mkdir(workingDir, { recursive: true });
 
 const ORIGIN_USER = config.remotes.origin.split("/").slice(-2)[0];
 let GITHUB_USER: string, GITHUB_TOKEN: string;

@@ -2,8 +2,7 @@ import cnf from "../config.json";
 const config = cnf.outdatedPRCheck;
 import { Octokit } from "@octokit/rest";
 import simpleGit from "simple-git";
-import mkdirp from "mkdirp";
-import { readFile, rm } from "fs/promises";
+import { mkdir, readFile, rm } from "fs/promises";
 import { execSync } from "child_process";
 let GITHUB_USER: string, GITHUB_TOKEN: string;
 if (!process.env.GITHUB_USER || !process.env.GITHUB_TOKEN) {
@@ -22,7 +21,7 @@ if (!GITHUB_TOKEN) throw new Error("Missing GITHUB_TOKEN value");
 const octo = new Octokit({ auth: GITHUB_TOKEN });
 const { pathname: workingDir } = new URL("../run", import.meta.url);
 await rm(workingDir, { force: true, recursive: true });
-await mkdirp(workingDir);
+await mkdir(workingDir, { recursive: true });
 const git = simpleGit(workingDir);
 await git
 	.init()
