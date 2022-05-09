@@ -1,8 +1,8 @@
 import cnf from "../config.json";
 const config = cnf.outdatedPRCheck;
 import { Octokit } from "@octokit/rest";
-import { mkdirp } from "fs-extra";
 import simpleGit from "simple-git";
+import mkdirp from "mkdirp";
 import { readFile, rm } from "fs/promises";
 import { execSync } from "child_process";
 let GITHUB_USER: string, GITHUB_TOKEN: string;
