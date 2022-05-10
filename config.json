@@ -121,7 +121,7 @@
 				},
 				{
 					"name": "API v10 changes (1341)",
-					"branch": "dev",
+					"branch": "v10",
 					"remote": "coolcalcacol"
 				}
 			],
