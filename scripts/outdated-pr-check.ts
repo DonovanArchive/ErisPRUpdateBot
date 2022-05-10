@@ -75,7 +75,7 @@ for (const pr of pulls) {
 			else lastSeen = c.sha;
 		});
 		const remoteName = pr.head.repo.owner.login.toLowerCase();
-		const prBranch = `${remoteName}/${pr.head.ref}`;
+		const prBranch = `upstream/${remoteName}/${pr.head.ref}`;
 		console.log("PR #%d is behind by %s commit%s%s", pr.number, behindBy >= 100 ? "100+" : behindBy, behindBy === 1 ? "" : "s", !lastSeen ? "" : ` (${lastSeen})`);
 		const current = await octo.request("GET /repos/{owner}/{repo}/commits", {
 			owner:    config.self.owner,
