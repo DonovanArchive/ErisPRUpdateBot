@@ -61,7 +61,7 @@
 					"name": "Handle Shared Ratelimits & Parse retryAfter Correctly (1344)",
 					"branch": "shared-ratelimit-patch",
 					"remote": "curtisf"
-				},\
+				},
 				{
 					"name": "Attachment type (1358)",
 					"branch": "attachments-type",
