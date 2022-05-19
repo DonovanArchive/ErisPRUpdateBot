@@ -61,17 +61,7 @@
 					"name": "Handle Shared Ratelimits & Parse retryAfter Correctly (1344)",
 					"branch": "shared-ratelimit-patch",
 					"remote": "curtisf"
-				},
-				{
-					"name": "fix(typings): outdated `EventListeners.channelCreate` type (1351)",
-					"branch": "dev",
-					"remote": "thetimtoy"
-				},
-				{
-					"name": "fix(constants): Include manageThreads, manageEvents in Permissions.all (1355)",
-					"branch": "fix/events-threads-guild-permissions",
-					"remote": "eritbh"
-				},
+				},\
 				{
 					"name": "Attachment type (1358)",
 					"branch": "attachments-type",
@@ -88,19 +78,9 @@
 					"remote": "headtrixz"
 				},
 				{
-					"name": "fix updating bot username, avatar, discriminator returns undefined (1366)",
-					"branch": "patch-1",
-					"remote": "dramex"
-				},
-				{
 					"name": "fix(getGuildAuditLog): Users Being Added To Cache Too late (1367)",
 					"branch": "fix-audit-log-users",
 					"remote": "donovandmc"
-				},
-				{
-					"name": "Corrected various typings (1368)",
-					"branch": "dev",
-					"remote": "oathompsonjones"
 				},
 				{
 					"name": "Adding support for type 24 message (1369)",
@@ -111,6 +91,11 @@
 					"name": "Improved max_concurrency aware ShardManager (1370)",
 					"branch": "concurSharding",
 					"remote": "hcgrandon"
+				},
+				{
+					"name": "fix(createRole): Split options into separate overloads (1376)",
+					"branch": "create-role-fix",
+					"remote": "donovandmc"
 				}
 			],
 			"everything-v10": [
