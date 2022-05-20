@@ -93,6 +93,11 @@
 					"remote": "hcgrandon"
 				},
 				{
+					"name": "feat(permissions): Slash Permissions v2 (1372)",
+					"branch": "slash-permissions-v2",
+					"remote": "coolcalcacol"
+				},
+				{
 					"name": "fix(createRole): Split options into separate overloads (1376)",
 					"branch": "create-role-fix",
 					"remote": "donovandmc"
