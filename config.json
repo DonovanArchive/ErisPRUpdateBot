@@ -125,6 +125,11 @@
 					"name": "refactor(interactions): Redo types and remove unnecessary data (1309)",
 					"branch": "interactions-rewrite",
 					"remote": "donovandmc"
+				},
+				{
+					"name": "feat(interactions): Localization (1335)",
+					"branch": "interactions-locale",
+					"remote": "donovandmc"
 				}
 			]
 		},
