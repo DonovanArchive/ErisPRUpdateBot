@@ -33,11 +33,6 @@
 					"remote": "bsian03"
 				},
 				{
-					"name": "fix(Member): Parse Member#premiumSince to timestamp (1318)",
-					"branch": "premiumSince",
-					"remote": "bsian03"
-				},
-				{
 					"name": "Try to fix receive stream event lost after reconnect (1332)",
 					"branch": "fix-receive-event",
 					"remote": "jimchen5209"
@@ -66,11 +61,6 @@
 					"name": "Attachment type (1358)",
 					"branch": "attachments-type",
 					"remote": "coolcalcacol"
-				},
-				{
-					"name": "fix(Message): Jumplink throwing on DM messages (1359)",
-					"branch": "jumplink",
-					"remote": "bsian03"
 				},
 				{
 					"name": "Support guild bans pagination (1363)",
