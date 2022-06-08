@@ -19,11 +19,16 @@
 				},
 				{
 					"name": "Guild Scheduled Events (1275)",
+					"branch": "deprecation-process-warnings",
+					"remote": "eritbh"
+				},
+				{
+					"name": "Guild Scheduled Events (1276)",
 					"branch": "guild-events",
 					"remote": "loliticos"
 				},
 				{
-					"name": "Add token checks when constructing client (1283)",
+					"name": "feat(connect): Add token check (1283)",
 					"branch": "token-check",
 					"remote": "catboi8"
 				},
@@ -33,18 +38,8 @@
 					"remote": "bsian03"
 				},
 				{
-					"name": "Try to fix receive stream event lost after reconnect (1332)",
-					"branch": "fix-receive-event",
-					"remote": "jimchen5209"
-				},
-				{
-					"name": "Allows multiple channel position changes in a single request (1328)",
-					"branch": "master",
-					"remote": "xaxim"
-				},
-				{
-					"name": "Interaction Merge (1309 & 1335)",
-					"branch": "interactions",
+					"name": "refactor(interactions): Redo types and remove unnecessary data (1309)",
+					"branch": "interactions-rewrite",
 					"remote": "donovandmc"
 				},
 				{
@@ -53,24 +48,9 @@
 					"remote": "linker-123"
 				},
 				{
-					"name": "Handle Shared Ratelimits & Parse retryAfter Correctly (1344)",
-					"branch": "shared-ratelimit-patch",
-					"remote": "curtisf"
-				},
-				{
 					"name": "Attachment type (1358)",
 					"branch": "attachments-type",
 					"remote": "coolcalcacol"
-				},
-				{
-					"name": "Support guild bans pagination (1363)",
-					"branch": "guild-bans",
-					"remote": "headtrixz"
-				},
-				{
-					"name": "fix(getGuildAuditLog): Users Being Added To Cache Too late (1367)",
-					"branch": "fix-audit-log-users",
-					"remote": "donovandmc"
 				},
 				{
 					"name": "Adding support for type 24 message (1369)",
@@ -78,18 +58,18 @@
 					"remote": "flamableassassin"
 				},
 				{
-					"name": "Improved max_concurrency aware ShardManager (1370)",
-					"branch": "concurSharding",
-					"remote": "hcgrandon"
-				},
-				{
 					"name": "feat(permissions): Slash Permissions v2 (1372)",
 					"branch": "slash-permissions-v2",
 					"remote": "coolcalcacol"
 				},
 				{
-					"name": "fix(createRole): Split options into separate overloads (1376)",
-					"branch": "create-role-fix",
+					"name": "Overall Consistency Fixes & Minor Feature Additions (1379)",
+					"branch": "fixes-n-shit",
+					"remote": "donovandmc"
+				},
+				{
+					"name": "feat(options): Gateway Options (1384)",
+					"branch": "gateway-options",
 					"remote": "donovandmc"
 				}
 			],
@@ -104,18 +84,6 @@
 					"branch": "v10",
 					"remote": "coolcalcacol"
 				}
-			],
-			"interactions": [
-				{
-					"name": "Eris Dev",
-					"branch": "dev",
-					"remote": "upstream"
-				},
-				{
-					"name": "refactor(interactions): Redo types and remove unnecessary data (1309)",
-					"branch": "interactions-rewrite",
-					"remote": "donovandmc"
-				}
 			]
 		},
 		"remotes": {
@@ -127,19 +95,12 @@
 			"loliticos": "https://github.com/Loliticos/eris",
 			"catboi8": "https://github.com/Catboi8/eris",
 			"bsian03": "https://github.com/bsian03/eris",
-			"xaxim": "https://github.com/xaxim/eris",
-			"jimchen5209": "https://github.com/jimchen5209/eris",
 			"donovandmc": "https://github.com/DonovanDMC/eris",
 			"linker-123": "https://github.com/Linker-123/eris-1",
-			"curtisf": "https://github.com/curtisf/eris",
-			"thetimtoy": "https://github.com/thetimtoy/eris",
 			"eritbh": "https://github.com/eritbh/eris",
 			"coolcalcacol": "https://github.com/coolcalcacol/eris",
 			"headtrixz": "https://github.com/HeadTriXz/eris-1",
-			"dramex": "https://github.com/Dramex/eris",
-			"oathompsonjones": "https://github.com/oathompsonjones/eris",
-			"flamableassassin": "https://github.com/flamableassassin/eris",
-			"hcgrandon": "https://github.com/HcgRandon/eris"
+			"flamableassassin": "https://github.com/flamableassassin/eris"
 		}
 	},
 	"outdatedPRCheck": {
