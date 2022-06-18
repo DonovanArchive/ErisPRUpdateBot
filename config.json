@@ -71,6 +71,11 @@
 					"name": "feat(options): Gateway Options (1384)",
 					"branch": "gateway-options",
 					"remote": "donovandmc"
+				},
+				{
+					"name": "feat(AutoModeration): Support Auto Moderation (1390)",
+					"branch": "automod",
+					"remote": "donovandmc"
 				}
 			],
 			"everything-v10": [
